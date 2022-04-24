@@ -3,8 +3,7 @@ package com.bridgelabzInvoice;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.Assert;
-import org.junit.Test;
+
 
 public class InvoiceServiceTest {
 
@@ -33,6 +32,6 @@ public class InvoiceServiceTest {
         double distance = 0.1;
         int time = 1;
         double fare = invoiceGenerator.calculateFare(distance, time);
-        Assert.assertEquals(5, fare, 0.0);
+        assertEquals(5, fare, 0.0);
     }
 }
