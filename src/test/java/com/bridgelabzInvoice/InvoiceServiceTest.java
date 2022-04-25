@@ -81,7 +81,6 @@ public class InvoiceServiceTest {
         rideBook.put("Akshay", rides1);
         String userID = "Shardul";
         double summary = invoiceGenerator.calculateFare(userID, rideBook);
-        //InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(30, 2.0);
         assertEquals(30, summary);
     }
 
@@ -101,9 +100,8 @@ public class InvoiceServiceTest {
         };
         rideBook.put("Shardul", rides);
         rideBook.put("Akshay", rides1);
-        String userID = "Shardul";
-        InvoiceSummary summary = invoiceGenerator.calculateFare(userID, rideBook);
-        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(60.0, 2);
-        assertEquals(expectedInvoiceSummary, summary);
-    }	    }
+        String userID = "Akshay";
+        double summary = invoiceGenerator.calculateFare(userID, rideBook);
+        assertEquals(40.0, summary);
+    }
 }
