@@ -100,8 +100,8 @@ public class InvoiceServiceTest {
         };
         rideBook.put("Shardul", rides);
         rideBook.put("Akshay", rides1);
-        String userID = "Akshay";
+        String userID = "Shardul";
         double summary = invoiceGenerator.calculateFare(userID, rideBook);
-        assertEquals(40.0, summary);
+        assertEquals(30.0, summary);
     }
 }
