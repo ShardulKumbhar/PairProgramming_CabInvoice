@@ -84,4 +84,26 @@ public class InvoiceServiceTest {
         //InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(30, 2.0);
         assertEquals(30, summary);
     }
+
+    /*
+    Test Case - 5 (Given UserId And Rides of different categories of ride Should return invoice generator)
+     */
+    @Test
+    public void givenNormalAndPremiumRideRate_ShouldReturnTotalFare() {
+        Map<String, Ride[]> rideBook = new HashMap<>();
+        Ride[] rides = {
+                new Ride(CategoryRide.PREMIUM, 2.0, 5),
+                new Ride(CategoryRide.REGULAR, 0.1, 1)
+        };
+        Ride[] rides1 = {
+                new Ride(CategoryRide.PREMIUM, 3.0, 5),
+                new Ride(CategoryRide.REGULAR, 0.1, 1)
+        };
+        rideBook.put("Shardul", rides);
+        rideBook.put("Akshay", rides1);
+        String userID = "Shardul";
+        InvoiceSummary summary = invoiceGenerator.calculateFare(userID, rideBook);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(60.0, 2);
+        assertEquals(expectedInvoiceSummary, summary);
+    }	    }
 }
