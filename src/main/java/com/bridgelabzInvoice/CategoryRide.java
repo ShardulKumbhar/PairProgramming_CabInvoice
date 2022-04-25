@@ -18,3 +18,4 @@ public enum CategoryRide implements InvoiceService {
         double fare = (distance * rate_Per_Km) + (time * rate_Per_Min);
         return Math.max(fare, MIN_FARE);
     }
+}
