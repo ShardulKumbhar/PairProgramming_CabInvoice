@@ -1,6 +1,5 @@
 package com.bridgelabzInvoice;
 
-<<<<<<< HEAD
 public enum CategoryRide implements InvoiceService {
     PREMIUM(15.0, 2, 20.0), REGULAR(10.0, 1, 5.0);
 
@@ -19,8 +18,3 @@ public enum CategoryRide implements InvoiceService {
         double fare = (distance * rate_Per_Km) + (time * rate_Per_Min);
         return Math.max(fare, MIN_FARE);
     }
-=======
-public interface CategoryRide {
-    double calculateCategoryFare(double distance, int time);
->>>>>>> 37be4b0 (Refactor: Logic For UC3)
-}
