@@ -7,7 +7,7 @@ public class Ride {
     /*
     created Constructor
      */
-    public Ride(double distance , int time ){
+    public Ride(CategoryRide regular, double distance , int time ){
         this.distance=distance;
         this.time=time;
     }

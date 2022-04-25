@@ -12,6 +12,8 @@ public class InvoiceSummary {
         this.totalFare = totalFare;
         this.averageFare = this.totalFare / this.noOfRides;
     }
+
+
     /*
     Generate equals() Method
      */

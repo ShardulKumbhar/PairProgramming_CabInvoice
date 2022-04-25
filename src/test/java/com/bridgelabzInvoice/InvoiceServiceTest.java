@@ -2,13 +2,16 @@ package com.bridgelabzInvoice;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class InvoiceServiceTest {
 
     public static InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
-    ;
+
 
     /**
      * Step 1 -Calculating the fair
@@ -40,7 +43,7 @@ public class InvoiceServiceTest {
      */
     @Test
     public void givenMultipleRidesShouldReturnTotalFare() {
-        Ride[] rides = {new Ride(2.0, 5), new Ride(0.1, 1)};
+        Ride[] rides = {new Ride(CategoryRide.REGULAR, 2.0, 5), new Ride(CategoryRide.REGULAR, 0.1, 1)};
         double fare = invoiceGenerator.calculateFare(rides);
         assertEquals(30, fare, 0.0);
     }
@@ -53,10 +56,10 @@ public class InvoiceServiceTest {
     @Test
     public void givenMultipleRidesShouldReturnRideSummary() {
 
-        Ride[] rides = {new Ride(2.0, 5),
-                new Ride(0.1, 1)};
+        Ride[] rides = {new Ride(CategoryRide.REGULAR, 2.0, 5),
+                new Ride(CategoryRide.REGULAR, 0.1, 1)};
 
-        InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
+       InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
         InvoiceSummary expectedInvoicesummary = new InvoiceSummary(2, 30.0);
         assertEquals(expectedInvoicesummary, summary);
     }
@@ -75,10 +78,10 @@ public class InvoiceServiceTest {
                 new Ride(CategoryRide.REGULAR, 0.1, 1)
         };
         rideBook.put("Shardul", rides);
-        rideBook.put("Akshay", rides1); 
+        rideBook.put("Akshay", rides1);
         String userID = "Shardul";
-        InvoiceSummary summary = invoiceGenerator.calculateFare(userID, rideBook);
-        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(30.0, 2);
-        assertEquals(expectedInvoiceSummary, summary);
+        double summary = invoiceGenerator.calculateFare(userID, rideBook);
+        //InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(30, 2.0);
+        assertEquals(30, summary);
     }
 }
