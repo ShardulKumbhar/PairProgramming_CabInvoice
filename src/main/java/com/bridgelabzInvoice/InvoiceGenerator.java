@@ -32,4 +32,15 @@ public class InvoiceGenerator {
         }
         return fare;
     }
+
+    /*
+     Method to get Invoice Summary
+      */
+    public InvoiceSummary getInvoiceSummary(Ride[] rides) {
+        double totalFare = 0;
+        for (Ride ride : rides) {
+            totalFare += this.calculateFare(ride.distance, ride.time);
+        }
+        return new InvoiceSummary(rides.length, totalFare);
+    }
 }
