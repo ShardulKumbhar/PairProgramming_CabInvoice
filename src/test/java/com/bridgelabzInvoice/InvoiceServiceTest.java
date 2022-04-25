@@ -11,7 +11,7 @@ public class InvoiceServiceTest {
     ;
 
     /**
-     * Calculating the fair
+     * Step 1 -Calculating the fair
      */
     @Test
     public void givenDistanceAndTime_ShouldReturnTotalFare() {
@@ -25,7 +25,7 @@ public class InvoiceServiceTest {
     }
 
     /**
-     * Rigorous Test :- Given Less Distance And Less Time Return Minimum Fare Equality Check
+     *Step 1-  Rigorous Test :- Given Less Distance And Less Time Return Minimum Fare Equality Check
      */
     @Test
     public void givenLessDistanceAndTimeShouldReturnMinimumFare() {
@@ -36,12 +36,28 @@ public class InvoiceServiceTest {
     }
 
     /**
-     * Rigorous Test :- Given Multiple Rides Return Total Fare Equality Check
+     * Step 2-Rigorous Test :- Given Multiple Rides Return Total Fare Equality Check
      */
     @Test
     public void givenMultipleRidesShouldReturnTotalFare() {
         Ride[] rides = {new Ride(2.0, 5), new Ride(0.1, 1)};
         double fare = invoiceGenerator.calculateFare(rides);
         assertEquals(30, fare, 0.0);
+    }
+    /*
+    Step 3 - Enhanced Invoice
+    calculating total number of rides
+    total fare
+    Avrage fare per Ride
+     */
+    @Test
+    public void givenMultipleRidesShouldReturnRideSummary() {
+
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(0.1, 1)};
+
+        InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
+        InvoiceSummary expectedInvoicesummary = new InvoiceSummary(2, 30.0);
+        assertEquals(expectedInvoicesummary, summary);
     }
 }
